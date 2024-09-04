@@ -7,20 +7,17 @@ use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
-    // Menampilkan daftar mahasiswa
     public function index()
     {
         $mahasiswas = Mahasiswa::all();
         return view('dashboard.mahasiswa.index', compact('mahasiswas'));
     }
 
-    // Menampilkan form tambah mahasiswa
     public function create()
     {
         return view('dashboard.mahasiswa.create');
     }
 
-    // Menyimpan data mahasiswa baru
     public function store(Request $request)
     {
         $request->validate([
@@ -33,14 +30,11 @@ class MahasiswaController extends Controller
         Mahasiswa::create($request->all());
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil ditambahkan');
     }
-
-    // Menampilkan form edit mahasiswa
     public function edit(Mahasiswa $mahasiswa)
     {
         return view('dashboard.mahasiswa.edit', compact('mahasiswa'));
     }
 
-    // Memperbarui data mahasiswa
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
         $request->validate([
@@ -54,7 +48,6 @@ class MahasiswaController extends Controller
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil diperbarui');
     }
 
-    // Menghapus data mahasiswa
     public function destroy(Mahasiswa $mahasiswa)
     {
         $mahasiswa->delete();

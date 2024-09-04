@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Mahasiswa;
+
 
 use Illuminate\Http\Request;
 
@@ -8,6 +10,7 @@ class DashboardController extends Controller
 {
   public function index()
     {
-        return view('dashboard.index');
+      $mahasiswas = Mahasiswa::all();
+      return view('dashboard.index', compact('mahasiswas'));
     }
 }

@@ -18,6 +18,19 @@ route::get('/', function () {
     return view('userpage.welcome');
 })->name('userpage');
 
+route::get('/manipulasi_dom', function () {
+    return view('modul4.manipulasi_dom');
+})->name('manipulasi_dom');
+route::get('/effects', function () {
+    return view('modul4.effects');
+})->name('effects');
+route::get('/ajax', function () {
+    return view('modul4.ajax');
+})->name('ajax');
+route::get('/ajax2', function () {
+    return view('modul4.ajax2');
+})->name('ajax');
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
